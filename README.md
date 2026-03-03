@@ -134,3 +134,10 @@ This repo includes a lightweight GitHub Actions workflow to run Python compile c
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Employer Quick Links
+- Project brief: `docs/PROJECT_BRIEF.md`
+- Resume bullets: `docs/RESUME_BULLETS.md`
+- Security policy: `SECURITY.md`
+- Contribution guide: `CONTRIBUTING.md`
+- Code of conduct: `CODE_OF_CONDUCT.md`
