@@ -1,47 +1,67 @@
 # Alpha (Local Personal AI Assistant)
 
-Alpha is designed as a **strict single-user local app**. Each person who installs it runs their own instance and local database.
+Alpha is a strict single-user local assistant for Mac/iPhone-style usage.  
+Each installation has its own local data. No Alpha-to-Alpha communication is implemented.
 
-## Privacy/Isolation Model
+## Privacy and Isolation
 
-- Alpha stores memory/tasks/check-ins in local SQLite on that machine.
-- Backend binds to `127.0.0.1` by default (not publicly reachable).
-- Requests from non-local client IPs are rejected by middleware.
-- Trusted host and CORS defaults are limited to localhost origins.
-- Relay/peer communication code is removed from this project.
-- `SINGLE_USER_MODE=true` is enforced at backend startup.
+- Local SQLite storage per installation.
+- Backend binds to `127.0.0.1` only.
+- Non-local client requests are blocked.
+- CORS and trusted hosts are localhost-only.
+- Relay/peer code is removed.
+- `SINGLE_USER_MODE=true` is enforced at startup.
 
-## 1) Backend setup (Mac)
+## Requirements
+
+- macOS
+- Python `3.13`
+- Optional: OpenAI API key for full AI responses
+
+## Quick Start (Mac)
 
 ```bash
-cd "/Users/kyleparker/Documents/New project 2/data/AI assistant/backend"
+cd backend
 python3.13 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env
+cp -n .env.example .env
 ```
 
-Set API key in `.env`:
+Edit `backend/.env`:
 
-```bash
+```env
 OPENAI_API_KEY=your_key_here
 OPENAI_MODEL=gpt-4.1-mini
 ASSISTANT_NAME=Alpha
+SINGLE_USER_MODE=true
 ```
 
-Run:
+Run backend:
 
 ```bash
+cd backend
+source .venv/bin/activate
 uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-Open:
-- `http://localhost:8000/app`
+Open in Safari:
+- `http://localhost:8000/app/`
 
-## 2) Run continuously on Mac (optional)
+## Verify Health
 
 ```bash
-cd "/Users/kyleparker/Documents/New project 2/data/AI assistant"
+curl -s http://127.0.0.1:8000/health
+```
+
+Expected:
+- `"status": "ok"`
+- `"single_user_mode": true`
+- `"ai_enabled": true` when `OPENAI_API_KEY` is valid
+
+## Run Continuously on Mac (Optional)
+
+```bash
 ./scripts/install_launchd.sh
 ```
 
@@ -54,13 +74,34 @@ launchctl load ~/Library/LaunchAgents/com.focusmate.backend.plist
 ```
 
 Logs:
-- `/Users/kyleparker/Documents/New project 2/data/AI assistant/backend/data/launchd.out.log`
-- `/Users/kyleparker/Documents/New project 2/data/AI assistant/backend/data/launchd.err.log`
+- `backend/data/launchd.out.log`
+- `backend/data/launchd.err.log`
 
-## 3) iPhone usage (strict isolation)
+## Troubleshooting
 
-Run a separate Alpha installation per device/user:
-- Mac Alpha: local DB on Mac.
-- iPhone Alpha: its own local app/runtime and storage.
+- `{"detail":"Not Found"}`:
+  - Use `http://localhost:8000/app/` (include trailing slash).
+  - Restart backend.
 
-This repository intentionally does not include user-to-user or Alpha-to-Alpha connection features.
+- UI loads as plain white text:
+  - Hard refresh in Safari: `Cmd + Option + R`.
+
+- `FetchEvent.respondWith ... Returned response is null`:
+  - Clear stale service worker in Safari console:
+    ```js
+    navigator.serviceWorker.getRegistrations().then(r => Promise.all(r.map(x => x.unregister()))).then(() => location.reload())
+    ```
+
+- Repeating fallback message / AI offline:
+  - Confirm `backend/.env` has `OPENAI_API_KEY=...`.
+  - Restart backend after editing `.env`.
+  - Check health endpoint and confirm `"ai_enabled": true`.
+
+- `429 insufficient_quota`:
+  - API billing/quota issue on OpenAI account.
+  - Check billing and limits in OpenAI platform settings.
+
+## Notes for iPhone
+
+This repo is local-first and single-user.  
+If an iPhone build is created, it should run as a separate local installation with its own storage.
