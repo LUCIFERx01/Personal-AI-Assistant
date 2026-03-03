@@ -121,6 +121,7 @@ This repo includes a lightweight GitHub Actions workflow to run Python compile c
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 - [docs/EMPLOYER-OVERVIEW.md](docs/EMPLOYER-OVERVIEW.md)
+- [docs/PROFILE-KIT.md](docs/PROFILE-KIT.md)
 - [docs/ROADMAP.md](docs/ROADMAP.md)
 - [docs/SECURITY.md](docs/SECURITY.md)
 
